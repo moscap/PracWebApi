@@ -1,0 +1,46 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Interface"
+        xmlns:non_local="clr-namespace:Recognition;assembly=Recognition"
+        xmlns:Recognition="clr-namespace:Recognition;assembly=Recognition" xmlns:Properties="clr-namespace:Interface.Properties" x:Class="Interface.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid x:Name="MainGrid" Height="419" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="792">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="2.5*"/>
+            <ColumnDefinition Width="2.5*"/>
+
+        </Grid.ColumnDefinitions>
+        <Button x:Name="button" Content="Select folder" Grid.Column="3" HorizontalAlignment="Left" Height="27" Margin="10,10,0,0" VerticalAlignment="Top" Width="138" Click="button_Click"/>
+        <Button x:Name="button1" Content="Start" Grid.Column="3" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" Width="138" Click="button1_Click"/>
+        <Button x:Name="button2" Content="Stop" Grid.Column="3" HorizontalAlignment="Left" Height="37" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="138" Click="button2_Click"/>
+        <ListBox x:Name="listBox" Grid.Column="3" HorizontalAlignment="Left" Height="222" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="138" ItemsSource="{Binding Classes, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Selected_Index, Mode=TwoWay}"/>
+        <ScrollViewer HorizontalAlignment="Left" Height="353" Margin="10,10,0,0" VerticalAlignment="Top" Width="614" Grid.RowSpan="4" Grid.ColumnSpan="3">
+            <ListView x:Name="listView" ItemsSource="{Binding File_Names, UpdateSourceTrigger=PropertyChanged}" IsSynchronizedWithCurrentItem="True" Width="551">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding Path=File_Name}" Width="300" Height="300"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
+        <Label x:Name="label" Content="Numder of images were recognized in this class:" HorizontalAlignment="Left" Height="32" Margin="10,10,0,0" Grid.Row="4" VerticalAlignment="Top" Width="376" FontSize="16"/>
+        <Label x:Name="label1" Content="{Binding File_Names.Count}" Grid.Column="1" HorizontalAlignment="Left" Height="32" Margin="10,10,0,0" Grid.Row="4" VerticalAlignment="Top" Width="75" FontSize="16"/>
+        <Button x:Name="button3" Content="Clear collection" Grid.Column="3" HorizontalAlignment="Left" Height="26" Margin="10,10,0,0" Grid.Row="4" VerticalAlignment="Top" Width="138" Click="button3_Click"/>
+        <Button x:Name="button4" Content="Statistics" Grid.Column="2" HorizontalAlignment="Left" Height="26" Margin="10,10,0,0" Grid.Row="4" VerticalAlignment="Top" Width="139" Click="button4_Click"/>
+
+    </Grid>
+</Window>
